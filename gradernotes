@@ -1,0 +1,17 @@
+I wrote the p3helper.c code myself
+I believe everything works perfectly under all conditions.
+I used four different files in order to get the coordination that was required. Each file contains the information that each robot uses in order to print in the correct triangle shape.
+
+count is the current count in order to know when the final widget is created.
+row is the current row that the numbers are being printed on.
+newCount is used after the number of items starts decreasing and is restarted from zero for each new row.
+DOWNFLAG is used as a flag to know that the number of items has started decreasing per row. 
+
+These files are necessary because it keeps track of the variable for all of the robots, without any confusion of which robot is using the file at which time. 
+
+It begins with figuring out exactly which row will be the longest row. I used the sqrt function in order to figure this out. By multiplying the number of robots with the quota, and getting the square root, I was able to figure out exactly which row will need to be the longest.
+ If the number wasn't already a perfect square, then the number one needed to be added to this result. The algorithm uses a series of for loops to count how many numbers have been printed out during and before each row. If the number was equal to the row number in the first half of the algorithm before DOWNFLAG was set, then thats when the "N\n" was added to the end of the line.
+If the count wasn't equal to the row number though, then only the PID was printed. After DOWNFLAG was set, the algorithm was changed slightly, and this is when newCount was started being used. If it got to the point that the row number was higher than the row with the largest amount of widgets, or the DOWNFLAG was already set, then we needed to start keeping track of what the highest number of widgets in that row should be. This was done by a variable named maxRow. Once the newCount was equal to the max number of widgets allowed in that row, a "N\n" was printed once again.
+Once count had equalled the total number of widgets required, then the last flag was set so that the finish function could be run in order to print the "F\n" rather than "N\n"
+
+
